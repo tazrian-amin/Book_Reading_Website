@@ -1,10 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import Aside from './Components/Aside/Aside';
+import Main from './Components/Main/Main';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello</h1>
+    <div className="container-fluid bg-info row">
+      <div className='col-sm-12 col-md-9'>
+        <Main></Main>
+      </div>
+      <div className='col-sm-12 col-md-3'>
+        <Aside></Aside>
+      </div>
     </div>
   );
 }
