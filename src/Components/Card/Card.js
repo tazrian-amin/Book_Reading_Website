@@ -2,6 +2,7 @@ import React from 'react';
 import './Card.css';
 const Card = (props) => {
     const { name, detail, img, pages } = props.card;
+    const { addPages } = props;
     return (
         <div>
             <div className="col">
@@ -13,7 +14,7 @@ const Card = (props) => {
                         <h6 className='fw-bold'>Pages: {pages}</h6>
                     </div>
                     <div className="card-footer">
-                        <a href="/" className='w-100 btn btn-success fw-bold'>Add to List</a>
+                        <button onClick={addPages} className='w-100 btn btn-success fw-bold'>Add to List</button>
                     </div>
                 </div>
             </div>

@@ -7,13 +7,17 @@ const Cards = () => {
         fetch('data.json')
             .then(res => res.json())
             .then(data => setCards(data))
-    }, [])
+    }, []);
+    const addPages = () => {
+        console.log('clicked')
+    }
     return (
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 bg-white rounded pb-3">
             {
                 cards.map(card => <Card
-                    key={cards.id}
+                    key={card.id}
                     card={card}
+                    addPages={addPages}
                 ></Card>)
             }
         </div>

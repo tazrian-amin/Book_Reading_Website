@@ -46,7 +46,7 @@ const Aside = () => {
                 <h6 id='interval'>0 hours</h6>
             </div>
             <div>
-                <a href="/" className='w-100 btn btn-success fw-bold'>Activity Completed</a>
+                <button className='w-100 btn btn-success fw-bold'>Activity Completed</button>
             </div>
         </div>
     );
