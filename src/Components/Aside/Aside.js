@@ -1,10 +1,11 @@
 import React from 'react';
 import './Aside.css';
-const Aside = () => {
+const Aside = (props) => {
+    const { total } = props;
     return (
-        <div className='container bg-white aside h-100'>
+        <div className='bg-white h-100 container aside'>
             <h3 className='text-center fw-bold pt-3'>Reader Info</h3>
-            <div className='container d-flex align-items-center justify-content-between bg-secondary bg-opacity-25 pt-3 text-center border border-light rounded'>
+            <div className='d-flex align-items-center justify-content-between px-2 bg-secondary bg-opacity-25 pt-3 text-center border border-light rounded'>
                 <div>
                     <h6 className='fw-bold'>Name</h6>
                     <p>Tazrian</p>
@@ -19,7 +20,7 @@ const Aside = () => {
                 </div>
             </div>
             <h5 className='my-3 text-success fw-bold'>Add An Interval</h5>
-            <div className='interval-btn container py-3 d-flex align-items-center justify-content-between bg-secondary bg-opacity-25 text-center border border-light rounded'>
+            <div className='interval-btn py-3 px-2 d-flex align-items-center justify-content-between bg-secondary bg-opacity-25 text-center border border-light rounded'>
                 <div>
                     <button className='border-0 rounded-circle fw-bold p-1'>2hr</button>
                 </div>
@@ -39,7 +40,7 @@ const Aside = () => {
             <h5 className='my-3 text-success fw-bold'>Reading Details</h5>
             <div className='d-flex align-items-center justify-content-between p-2 bg-secondary bg-opacity-25 border border-light rounded'>
                 <h6 className='fw-bold'>Total Pages to Read</h6>
-                <h6 id='total-pages-container'>0</h6>
+                <h6 id='total-pages-container'>{total}</h6>
             </div>
             <div className='d-flex align-items-center justify-content-between p-2 bg-secondary bg-opacity-25 border border-light rounded mt-2 mb-4'>
                 <h6 className='fw-bold'>Interval</h6>
