@@ -1,7 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Aside.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Aside = (props) => {
     const { total } = props;
+    const intervals = [2, 3, 4, 5, 6];
+    const [time, setTime] = useState(0);
+
+    const addToLs = (time) => {
+        setTime(time);
+        localStorage.setItem('time', time);
+    }
+
+    useEffect(() => {
+        const savedData = localStorage.getItem('time');
+        if (savedData) {
+            setTime(savedData);
+        }
+
+    }, [])
+
+    // toast 
+    const showToast = () => {
+        toast.success("Congratulations! Task Completed!", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+
     return (
         <div className='bg-white h-100 container aside'>
             <h3 className='text-center fw-bold pt-3'>Reader Info</h3>
@@ -20,22 +52,13 @@ const Aside = (props) => {
                 </div>
             </div>
             <h5 className='my-3 text-success fw-bold'>Add An Interval</h5>
+
             <div className='interval-btn py-3 px-2 d-flex align-items-center justify-content-between bg-secondary bg-opacity-25 text-center border border-light rounded'>
-                <div>
-                    <button className='border-0 rounded-circle fw-bold p-1'>2hr</button>
-                </div>
-                <div>
-                    <button className='border-0 rounded-circle fw-bold p-1'>3hr</button>
-                </div>
-                <div>
-                    <button className='border-0 rounded-circle fw-bold p-1'>4hr</button>
-                </div>
-                <div>
-                    <button className='border-0 rounded-circle fw-bold p-1'>5hr</button>
-                </div>
-                <div>
-                    <button className='border-0 rounded-circle fw-bold p-1'>6hr</button>
-                </div>
+                {
+                    intervals.map((interval) => {
+                        return <button key={interval} onClick={() => addToLs(interval)} className='border-0 rounded-circle fw-bold p-1'>{interval}hr</button>
+                    })
+                }
             </div>
             <h5 className='my-3 text-success fw-bold'>Reading Details</h5>
             <div className='d-flex align-items-center justify-content-between p-2 bg-secondary bg-opacity-25 border border-light rounded'>
@@ -44,10 +67,11 @@ const Aside = (props) => {
             </div>
             <div className='d-flex align-items-center justify-content-between p-2 bg-secondary bg-opacity-25 border border-light rounded mt-2 mb-4'>
                 <h6 className='fw-bold'>Interval</h6>
-                <h6 id='interval'>0 hours</h6>
+                <h6 id='interval'>{time}hr</h6>
             </div>
             <div>
-                <button className='w-100 btn btn-success fw-bold'>Activity Completed</button>
+                <button onClick={showToast} className='w-100 btn btn-success fw-bold'>Activity Completed</button>
+                <ToastContainer />
             </div>
         </div>
     );
