@@ -5,6 +5,7 @@ import Main from './Components/Main/Main';
 
 function App() {
   const [total, setTotal] = useState(0);
+
   // handle Add To List button 
   const handleAddToList = (pages) => {
     const previousValue = total;
@@ -14,9 +15,12 @@ function App() {
 
   return (
     <div className="bg-secondary bg-opacity-25 row row-cols-1 row-cols-md-2 g-0">
+      {/* Main container  */}
       <div className='col-12 col-md-8 col-lg-9'>
         <Main handleAddToList={handleAddToList}></Main>
       </div>
+
+      {/* Aside container */}
       <div className='col-12 col-md-4 col-lg-3'>
         <Aside
           total={total}

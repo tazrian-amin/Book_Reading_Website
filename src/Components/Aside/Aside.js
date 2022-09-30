@@ -8,6 +8,7 @@ const Aside = (props) => {
     const intervals = [2, 3, 4, 5, 6];
     const [time, setTime] = useState(0);
 
+    // add to Local Storage 
     const addToLs = (time) => {
         setTime(time);
         localStorage.setItem('time', time);
@@ -21,7 +22,7 @@ const Aside = (props) => {
 
     }, [])
 
-    // toast 
+    // show toast 
     const showToast = () => {
         toast.success("Congratulations! Task Completed!", {
             position: "bottom-right",
@@ -36,6 +37,7 @@ const Aside = (props) => {
 
     return (
         <div className='bg-white h-100 container aside'>
+            {/* Reader Info  */}
             <h3 className='text-center fw-bold pt-3'>Reader Info</h3>
             <div className='d-flex align-items-center justify-content-between px-2 bg-secondary bg-opacity-25 pt-3 text-center border border-light rounded'>
                 <div>
@@ -51,8 +53,9 @@ const Aside = (props) => {
                     <p>Bangladesh</p>
                 </div>
             </div>
-            <h5 className='my-3 text-success fw-bold'>Add An Interval</h5>
 
+            {/* Interval part */}
+            <h5 className='my-3 text-success fw-bold'>Add An Interval</h5>
             <div className='interval-btn py-3 px-2 d-flex align-items-center justify-content-between bg-secondary bg-opacity-25 text-center border border-light rounded'>
                 {
                     intervals.map((interval) => {
@@ -60,6 +63,8 @@ const Aside = (props) => {
                     })
                 }
             </div>
+
+            {/* Reading Detail part */}
             <h5 className='my-3 text-success fw-bold'>Reading Details</h5>
             <div className='d-flex align-items-center justify-content-between p-2 bg-secondary bg-opacity-25 border border-light rounded'>
                 <h6 className='fw-bold'>Total Pages to Read</h6>
@@ -69,6 +74,8 @@ const Aside = (props) => {
                 <h6 className='fw-bold'>Interval</h6>
                 <h6 id='interval'>{time}hr</h6>
             </div>
+
+            {/* Toast part */}
             <div>
                 <button onClick={showToast} className='w-100 btn btn-success fw-bold'>Activity Completed</button>
                 <ToastContainer />

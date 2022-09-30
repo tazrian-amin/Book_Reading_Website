@@ -9,15 +9,19 @@ const Main = (props) => {
     return (
         <div>
             <div className="container px-4">
+                {/* Header section  */}
                 <div className='header mt-3 d-flex'>
                     <img src={logo} alt="logo" />
                     <h1 className='fw-bold'>Hub For Bibliophiles</h1>
                 </div>
+
                 <h4 className='fw-bold text-success py-3 mb-4'>Select Books You Want To Read Today</h4>
+
+                {/* Cards component */}
                 <Cards handleAddToList={handleAddToList}></Cards>
             </div>
 
-            {/* Question container  */}
+            {/* Question container */}
             <div className='container p-3 row row-cols-1 row-cols-md-2 row-cols-lg-3'>
                 <div className='col p-3'>
                     <h3 className='fw-bold text-success'>How does React work?</h3>
